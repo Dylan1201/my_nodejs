@@ -7,22 +7,22 @@ var server = http.createServer();
 
 // 添加服务器监听
 server.on('request', function (request, response) {
-    console.log(request.url);
-    if (request.url === '/') {
-        fs.readFile('./index.html', function (err, data) {
-            response.end(data);
-        })
-    } else if(request.url === '/file_list'){
-        fs.readdir('./','utf-8',function(err,data){
-            response.end(JSON.stringify(data));
-        })
-    }else{
-        fs.readFile('.' + request.url, function (err, data) {
-            response.end(data);
-        })
-    }
+  console.log(request.url);
+  if (request.url === '/') {
+    fs.readFile('./index.html', function (err, data) {
+      response.end(data);
+    })
+  } else if (request.url === '/file_list') {
+    fs.readdir('./', 'utf-8', function (err, data) {
+      response.end(JSON.stringify(data));
+    })
+  } else {
+    fs.readFile('.' + request.url, function (err, data) {
+      response.end(data);
+    })
+  }
 })
 // 启动监听
 server.listen(8085, function () {
-    console.log('请访问localhost:8085')
+  console.log('请访问localhost:8085')
 })  

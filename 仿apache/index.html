@@ -2,46 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-        .table_th,
-        .table_tr {
-            color: blue;
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .table_th,
+    .table_tr {
+      color: blue;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="box">
-        <table>
-            <tr class="table_th">
-                <th>Name</th>
-                <th>Last modified</th>
-                <th>Size</th>
-                <th>Description</th>
-            </tr>
-            <!-- <tr>
+  <div class="box">
+    <table>
+      <tr class="table_th">
+        <th>Name</th>
+        <th>Last modified</th>
+        <th>Size</th>
+        <th>Description</th>
+      </tr>
+      <!-- <tr>
                 <td class="table_tr">1</td>
                 <td>2</td>
                 <td>3</td>
                 <td>4</td>
             </tr> -->
-        </table>
-    </div>
+    </table>
+  </div>
 </body>
 <script>
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            // console.log(xhr.responseText);
-            var data = JSON.parse(xhr.responseText);
-            var htmls = '';
-            for (var i = 0; i < data.length; i++) {
-                htmls += `
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      // console.log(xhr.responseText);
+      var data = JSON.parse(xhr.responseText);
+      var htmls = '';
+      for (var i = 0; i < data.length; i++) {
+        htmls += `
             <tr>
                 <td class="table_tr">`+ data[i] + `</td>
                 <td>2019-12-01</td>
@@ -49,12 +49,12 @@
                 <td>4</td>
             </tr>
             `
-            }
-            document.getElementsByTagName('table')[0].innerHTML += htmls;
-        }
+      }
+      document.getElementsByTagName('table')[0].innerHTML += htmls;
     }
-    xhr.open('get', './file_list');
-    xhr.send();
+  }
+  xhr.open('get', './file_list');
+  xhr.send();
 </script>
 
 </html>
